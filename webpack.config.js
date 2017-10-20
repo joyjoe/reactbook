@@ -5,7 +5,7 @@ var htmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   context: __dirname,
   entry: {
-    "index": ["./src/script/index.js"],
+    // "index": ["./src/script/index.js"],
     // "vendor": ["babel-polyfill"]
     "app": ["./src/app.js"]
   },
