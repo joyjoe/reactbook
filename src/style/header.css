@@ -1,0 +1,15 @@
+.bg-default{
+  background-color: #234195
+}
+
+.bg-cartoon{
+  background-color: #5e2003
+}
+
+.header{
+  background-color: #234195;
+  padding-bottom : 14px;
+  margin: 10px auto 15px;
+  color: #f60;
+  font-size: 16px;
+}

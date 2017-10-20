@@ -5,6 +5,12 @@
     "env"
   ],
   "plugins": [
-    "babel-plugin-transform-runtime"
+    "babel-plugin-transform-runtime",
+    "react-html-attrs", [
+      "import", {
+        "style": "css",
+        "libraryName": "antd-mobile"
+      }
+    ]
   ]
 }

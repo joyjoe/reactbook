@@ -13,23 +13,43 @@ module.exports = {
     filename: "[name]-[hash:4].js"
   },
   module: {
-    rules: [{
-      test: /\.js/,
-      exclude: /node_modules/,
-      use: [
-        "babel-loader"
-      ]
-    }]
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader", {
+            loader: "css-loader",
+            // options: {
+            //   // modules: true,
+            //   // localIdentName: "[name]__[local]__[hash:base64]"
+            // }
+          }
+        ]
+      }, 
+      {
+        test: /\.less$/,
+        use: [
+          "style-loader", {
+            loader: "css-loader",
+            // options: {
+            //   // modules: true,
+            //   // localIdentName: "[name]__[local]__[hash:base64]"
+            // }
+          },
+          {
+            loader: "less-loader" 
+          }
+        ]
+      },{
+        test: /\.js/,
+        exclude: /node_modules/,
+        use: ["babel-loader"]
+      }
+    ]
   },
   plugins: [
-    new cleanWebpackPlugin(["./dist"], {
-      root: __dirname
-    }),
-    new htmlWebpackPlugin({
-      template: "index.html",
-      title: "welcome to react's world",
-      inject: "body"
-    })
+    new cleanWebpackPlugin(["./dist"], {root: __dirname}),
+    new htmlWebpackPlugin({template: "index.html", title: "welcome to react's world", inject: "body"})
   ],
   devServer: {
     contentBase: "./dist",
