@@ -5,8 +5,9 @@ var htmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   context: __dirname,
   entry: {
-    "app": ["./src/index.js"],
+    "index": ["./src/script/index.js"],
     // "vendor": ["babel-polyfill"]
+    "app": ["./src/app.js"]
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
@@ -19,28 +20,24 @@ module.exports = {
         use: [
           "style-loader", {
             loader: "css-loader",
-            // options: {
-            //   // modules: true,
-            //   // localIdentName: "[name]__[local]__[hash:base64]"
-            // }
+            // options: {   // modules: true,   // localIdentName:
+            // "[name]__[local]__[hash:base64]" }
           }
         ]
-      }, 
-      {
+      }, {
         test: /\.less$/,
         use: [
           "style-loader", {
             loader: "css-loader",
-            // options: {
-            //   // modules: true,
-            //   // localIdentName: "[name]__[local]__[hash:base64]"
-            // }
-          },
-          {
-            loader: "less-loader" 
+            options: {
+              modules: true,
+              localIdentName: "[name]__[local]__[hash:base64]"
+            }
+          }, {
+            loader: "less-loader"
           }
         ]
-      },{
+      }, {
         test: /\.js/,
         exclude: /node_modules/,
         use: ["babel-loader"]
@@ -49,12 +46,19 @@ module.exports = {
   },
   plugins: [
     new cleanWebpackPlugin(["./dist"], {root: __dirname}),
-    new htmlWebpackPlugin({template: "index.html", title: "welcome to react's world", inject: "body"})
+    new htmlWebpackPlugin({
+      template: "index.html", 
+      title: "welcome to react's world", 
+      inject: "body",
+      chunks: ["app"]
+      // chunks: ["index"]
+    })
   ],
   devServer: {
     contentBase: "./dist",
     hot: true,
     // inline: false
     inline: true
-  }
+  },
+  devtool: "inline-source-map"
 };

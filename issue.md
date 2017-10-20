@@ -18,3 +18,9 @@
     mixins: [mixinObj]
   });
   ```
+
+* react-router4版本问题
+  commit-m"before init real project"为开启新项目前的最后一个提交版本，使用的是`react-router@2.8.1`,`antd@2.0.1`
+
+* 使用react-router@2.8问题
+  使用react-router之后报错`cannot read react.PropTypes`    
