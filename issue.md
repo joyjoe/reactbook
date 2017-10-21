@@ -24,3 +24,4 @@
 
 * 使用react-router@2.8问题
   使用react-router之后报错`cannot read react.PropTypes`    
+  git commit id: 25ea8d0

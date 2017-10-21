@@ -6,12 +6,20 @@
   ],
   "plugins": [
     "babel-plugin-transform-runtime",
-    "react-html-attrs", [
-      "import", {
+    "react-html-attrs", 
+    [
+      "import",
+      {
+        "style": "css",
+        "libraryName": "antd"
+      },
+      {
         "style": "css",
         "libraryName": "antd-mobile"
       }
     ],
-    ["transform-class-properties", { "spec": true }]
+    ["transform-class-properties", {
+      "spec": true
+    }]
   ]
 }
