@@ -27,6 +27,7 @@
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.7",
+    "fetch": "^1.1.0",
     "file-loader": "^1.1.5",
     "html-webpack-plugin": "^2.30.1",
     "less": "^3.0.0-alpha.3",

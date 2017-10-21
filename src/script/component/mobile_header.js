@@ -4,9 +4,14 @@ import {Menu, Icon} from 'antd';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 import logoImage from "../../image/logo.png";
+// add register module
+import { Form, Input, Button } from 'antd';
+const FormItem = Form.Item;
 
 class MobileHeader extends Component {
   render() {
+    console.log(this.props);
+    const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
     return (
       <div className="mobileheader">
         <header>
