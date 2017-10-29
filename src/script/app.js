@@ -1,28 +1,41 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import MediaQuery from "react-responsive";
-import PCIndex from './component/pc_index';
-import MobileIndex from './component/mobile_index';
-import PCFooter from './component/pc_footer';
-import MobileFooter from './component/mobile_footer';
+
+import PCIndex from "./component/pc_index";
+import PCNewsDetail from "./component/pc_news_detail";
+import PCUserCenter from "./component/pc_user_center";
+
+import MobileIndex from "./component/mobile_index";
+import MobileNewsDetail from "./component/mobile_news_detail";
+
+
 require("../style/pc.css");
 require("../style/mobile.css");
 // import "antd/dist/antd.css";
+
+// 引入react-router
+import { Router, Route, Link, hashHistory } from "react-router";
 
 class App extends Component {
   render() {
     return (
       <div>
         <MediaQuery query="(min-device-width: 1224px)">
-          <PCIndex />
-          <PCFooter />
+          <Router history={ hashHistory }>
+            <Route path="/" component={ PCIndex }></Route>
+            <Route path="/details/:uniquekey" component={ PCNewsDetail }></Route>
+            <Route path="/user" component={ PCUserCenter }></Route>
+          </Router>
         </MediaQuery>
         <MediaQuery query="(max-device-width: 980px)">
-          <MobileIndex />
-          <MobileFooter />
+          <Router history={ hashHistory }>
+            <Route path="/" component={ MobileIndex }></Route>
+            <Route path="/details/:uniquekey" component={ MobileNewsDetail }></Route>
+          </Router>
         </MediaQuery>
       </div>
-    );
+      );
   }
 }
 
