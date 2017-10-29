@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 import { Row, Col } from "antd";
 
-import { Link } from "react-router";
+// import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 /**
  * Properties

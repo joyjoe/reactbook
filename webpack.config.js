@@ -21,8 +21,8 @@ module.exports = {
         use: [
           "style-loader", {
             loader: "css-loader",
-            // options: {   // modules: true,   // localIdentName:
-            // "[name]__[local]__[hash:base64]" }
+          // options: {   // modules: true,   // localIdentName:
+          // "[name]__[local]__[hash:base64]" }
           }
         ]
       }, {
@@ -46,7 +46,7 @@ module.exports = {
       },
       {
         test: /\.(jpg|png|jpeg|gif)$/,
-        use:[
+        use: [
           {
             // loader: "url-loader"
             loader: "file-loader"
@@ -56,13 +56,15 @@ module.exports = {
     ]
   },
   plugins: [
-    new cleanWebpackPlugin(["./dist"], {root: __dirname}),
+    new cleanWebpackPlugin(["./dist"], {
+      root: __dirname
+    }),
     new htmlWebpackPlugin({
-      template: "index.html", 
-      title: "welcome to react's world", 
+      template: "index.html",
+      title: "welcome to react's world",
       inject: "body",
       chunks: ["app"]
-      // chunks: ["index"]
+    // chunks: ["index"]
     })
   ],
   devServer: {
@@ -70,7 +72,8 @@ module.exports = {
     // contentBase: "/",
     hot: true,
     // inline: false
-    inline: true
+    inline: true,
+    historyApiFallback: true
   },
   devtool: "inline-source-map"
 };

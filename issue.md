@@ -21,6 +21,12 @@
 
 * react-router4版本问题
   commit-m"before init real project"为开启新项目前的最后一个提交版本，使用的是`react-router@2.8.1`,`antd@2.0.1`
+  react-router4之后的版本，需要额外安装`react-router-dom`这个依赖包。并且很多组件都是从`react-router-dom`这个依赖包里导出的。
+  ```
+  import {BrowserRouter, Route, Switch} from "react-router-dom";
+  ```   
+  使用exact来严格匹配Route路径    
+
 
 * 使用react-router@2.8问题
   使用react-router之后报错`cannot read react.PropTypes`    

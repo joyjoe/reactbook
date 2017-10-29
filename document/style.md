@@ -47,3 +47,6 @@
   ```
   :global(.className){...style...}
   ```
+
+* react-responsive
+  为了简化多终端适配问题，可以使用react-responsive这个依赖包来实现多终端设备下的响应式开发    

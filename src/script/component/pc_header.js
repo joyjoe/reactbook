@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Router, Link } from "react-router";
+// import { Route, Router, Link } from "react-router";
+import { Link } from "react-router-dom";
+
 import { Row, Col, Menu, Icon, Form, Input, Button, Modal, Tabs, message } from 'antd';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;

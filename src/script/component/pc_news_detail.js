@@ -17,7 +17,7 @@ class PCNewsDetail extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://newsapi.gugujiankong.com/Handler.ashx?action=getnewsitem&uniquekey=${this.props.params.uniquekey}`, {
+    fetch(`http://newsapi.gugujiankong.com/Handler.ashx?action=getnewsitem&uniquekey=${this.props.match.params.uniquekey}`, {
       method: "GET"
     }).then((response) => response.json()).then((json) => {
       this.setState({
@@ -43,7 +43,7 @@ class PCNewsDetail extends Component {
           <div className="articleContainer" dangerouslySetInnerHTML={ this.createMarkup() }></div>
           <hr/>
           { /* comments */ }
-          <Comments uniquekey={ this.props.params.uniquekey } />
+          <Comments uniquekey={ this.props.match.params.uniquekey } />
           </Col>
           <Col span="6">
           { /* 右侧的新闻推荐 */ }
