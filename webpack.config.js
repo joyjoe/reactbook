@@ -62,7 +62,8 @@ module.exports = {
     new htmlWebpackPlugin({
       template: "index.html",
       title: "welcome to react's world",
-      inject: "body",
+      // inject: "body",
+      inject: false,
       chunks: ["app"]
     // chunks: ["index"]
     })
