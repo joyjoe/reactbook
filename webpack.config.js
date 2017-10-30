@@ -1,13 +1,17 @@
 var path = require("path");
+var webpack = require("webpack");
 var cleanWebpackPlugin = require("clean-webpack-plugin");
 var htmlWebpackPlugin = require("html-webpack-plugin");
+var uglifyjsWebpackPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
   context: __dirname,
   entry: {
     // "index": ["./src/script/index.js"],
     // "vendor": ["babel-polyfill"]
-    "app": ["./src/script/app.js"]
+    "app": ["./src/script/app.js"],
+    "reactVendor": ["react", "react-dom", "react-responsive"],
+  // "antdVendor": ["antd"]
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
@@ -66,7 +70,16 @@ module.exports = {
       inject: false,
       chunks: ["app"]
     // chunks: ["index"]
-    })
+    }),
+    new uglifyjsWebpackPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "reactVendor",
+      chunks: ["app", "reactVendor"]
+    }),
+  // new webpack.optimize.CommonsChunkPlugin({
+  //   name: "antdVendor",
+  //   chunks: ["app", "antdVendor"]
+  // })
   ],
   devServer: {
     contentBase: "./dist",
@@ -74,7 +87,12 @@ module.exports = {
     hot: true,
     // inline: false
     inline: true,
-    historyApiFallback: true
+  // historyApiFallback: true
   },
-  devtool: "inline-source-map"
+  // devtool: "inline-source-map",
+  performance: {
+    hints: "warning",
+    // maxEntrypointSize: 250000,
+    maxAssetSize: 450000
+  }
 };

@@ -5,6 +5,7 @@ const TabPane = Tabs.TabPane;
 
 import MobileHeader from "./mobile_header";
 import MobileList from "./mobile_list";
+import MobileListPullRefresh from "./mobile_list_pullrefresh";
 import MobileFooter from "./mobile_footer";
 
 // 导入 图片资源
@@ -43,7 +44,8 @@ class MobileIndex extends Component {
             <MobileList type="guonei" count="20"></MobileList>
           </TabPane>
           <TabPane tab="国际" key="guoji">
-            <MobileList type="guoji" count="20"></MobileList>
+            { /* <MobileList type="guoji" count="20"></MobileList> */ }
+            <MobileListPullRefresh type="guoji" count="5"></MobileListPullRefresh>
           </TabPane>
           <TabPane tab="娱乐" key="yule">
             <MobileList type="yule" count="20"></MobileList>

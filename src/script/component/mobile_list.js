@@ -4,6 +4,7 @@ import { Row, Col } from "antd";
 
 // import { Link } from "react-router";
 import { Link } from "react-router-dom";
+import Tloader from "react-touch-loader";
 
 /**
  * Properties
@@ -14,13 +15,27 @@ class MobileList extends Component {
   constructor() {
     super();
     this.state = {
-      news: []
+      news: [],
+      initializing: 1,
+      hasMore: false,
+      count: 5
     };
+
+    this.handleLoadMore = this.handleLoadMore.bind(this);
   }
 
   componentWillMount() {
     // fetch news
-    fetch(`http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=${this.props.type}&count=${this.props.count}`, {
+    /* fetch(`http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=${this.props.type}&count=${this.props.count}`, {
+      method: "GET"
+    }).then(response => response.json())
+      .then(json => {
+        this.setState({
+          news: json
+        });
+      }); */
+
+    fetch(`http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=${this.props.type}&count=${this.state.count}`, {
       method: "GET"
     }).then(response => response.json())
       .then(json => {
@@ -29,6 +44,34 @@ class MobileList extends Component {
         });
       });
   }
+
+  componentDidMount() {
+    this.setState((prevState, props) => ({
+      hasMore: true,
+      initializing: 2
+    }));
+  }
+
+  handleLoadMore(resolve) {
+    setTimeout(() => {
+      this.setState((prevState, props) => ({
+        initializing: 1,
+        count: prevState.count + 5,
+        hasMore: prevState.count > 0 && prevState.count < 50
+      }));
+
+      fetch(`http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=${this.props.type}&count=${this.state.count}`, {
+        method: "GET"
+      }).then(response => response.json())
+        .then(json => {
+          this.setState({
+            news: json
+          });
+          resolve();
+        });
+    }, 2e3);
+  }
+
 
   render() {
     const {news} = this.state;
@@ -56,11 +99,16 @@ class MobileList extends Component {
     }) :
       '加载失败请重试';
 
+    // Tloader props
+    const {initializing, hasMore} = this.state;
+
     return (
       <div class="topNewsList">
         <Row>
           <Col span="24">
-          { newsList }
+          <Tloader initializing={ initializing } hasMore={ hasMore } onLoadMore={ this.handleLoadMore }>
+            { newsList }
+          </Tloader>
           </Col>
         </Row>
       </div>

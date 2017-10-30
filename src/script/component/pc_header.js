@@ -151,7 +151,7 @@ class PCHeader extends Component {
           <a href="/" className="logo">
             { /* 为什么这里的图片不会经过webpack打包？ */ }
             { /* <img src="../../image/logo.png" alt="logo"/> */ }
-            <img src={ logoImage } alt="logo" />
+            <img src={ "/" + logoImage } alt="logo" />
             <span>React News</span>
           </a>
           </Col>

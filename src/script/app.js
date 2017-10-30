@@ -24,7 +24,7 @@ class App extends Component {
     return (
       <div>
         <MediaQuery query="(min-device-width: 1224px)">
-          <BrowserRouter history={ hashHistory }>
+          <BrowserRouter>
             <Switch>
               <Route exact path="/" component={ PCIndex }></Route>
               <Route path="/details/:uniquekey" component={ PCNewsDetail }></Route>
@@ -33,7 +33,7 @@ class App extends Component {
           </BrowserRouter>
         </MediaQuery>
         <MediaQuery query="(max-device-width: 980px)">
-          <BrowserRouter history={ hashHistory }>
+          <BrowserRouter>
             <Switch>
               <Route exact path="/" component={ MobileIndex }></Route>
               <Route path="/details/:uniquekey" component={ MobileNewsDetail }></Route>
