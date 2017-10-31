@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 import { Card } from "antd";
 
@@ -14,18 +14,18 @@ class PCNewsBlock extends Component {
   constructor() {
     super();
     this.state = {
-      news: []
+      "news": []
     };
   }
 
   componentWillMount() {
     // fetch news
     fetch(`http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=${this.props.type}&count=${this.props.count}`, {
-      method: "GET"
+      "method": "GET"
     }).then(response => response.json())
       .then(json => {
         this.setState({
-          news: json
+          "news": json
         });
       });
   }
@@ -39,7 +39,7 @@ class PCNewsBlock extends Component {
                 </Link>
               </li>);
     }) :
-      '加载失败请重试';
+      "加载失败请重试";
 
     return (
       <div class="topNewsList">

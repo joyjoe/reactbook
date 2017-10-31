@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 import { Row, Col } from "antd";
 
@@ -15,29 +15,29 @@ class MobileList extends Component {
   constructor() {
     super();
     this.state = {
-      news: []
+      "news": []
     };
   }
 
   componentWillMount() {
     // fetch news
     fetch(`http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=${this.props.type}&count=${this.props.count}`, {
-      method: "GET"
+      "method": "GET"
     }).then(response => response.json())
       .then(json => {
         this.setState({
-          news: json
+          "news": json
         });
       });
   }
 
   handleRefresh(resolve, reject) {
-    fetch(`http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=yule&count=1`, {
-      method: "GET"
+    fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=yule&count=1", {
+      "method": "GET"
     }).then(response => response.json())
       .then(json => {
         this.setState({
-          news: json
+          "news": json
         });
         resolve();
       });
@@ -67,7 +67,7 @@ class MobileList extends Component {
         </section>
         );
     }) :
-      '加载失败请重试';
+      "加载失败请重试";
 
     // Tloader props
     const {initializing, hasMore} = this.state;
@@ -76,7 +76,7 @@ class MobileList extends Component {
       <div class="topNewsList">
         <Row>
           <Col span="24">
-          <ReactPullToRefresh onRefresh={ this.handleRefresh.bind(this) } style={ { textAlign: "center" } }>
+          <ReactPullToRefresh onRefresh={ this.handleRefresh.bind(this) } style={ { "textAlign": "center" } }>
             <h3>下拉刷新</h3>
             <div>
               { newsList }

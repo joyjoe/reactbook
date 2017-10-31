@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Row, Col } from "antd";
-import { Menu, Icon } from 'antd';
+import { Menu, Icon } from "antd";
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 import logoImage from "../../image/logo.png";
 // add register module
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button } from "antd";
 const FormItem = Form.Item;
 
-class MobileHeader extends Component {
+let MobileHeader = class MobileHeader extends Component {
   render() {
     const {getFieldDecorator, getFieldsError, getFieldError, isFieldTouched} = this.props.form;
     return (

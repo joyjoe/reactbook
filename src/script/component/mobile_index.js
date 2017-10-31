@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // 导入 antd
 import { Tabs, Carousel } from "antd";
 const TabPane = Tabs.TabPane;
@@ -17,10 +17,10 @@ import CarouselPic4 from "../../image/carousel_4.jpg";
 class MobileIndex extends Component {
   render() {
     const settings = {
-      effect: "fade",
-      dots: true,
-      autoplay: true,
-      easing: "ease-in-out"
+      "effect": "fade",
+      "dots": true,
+      "autoplay": true,
+      "easing": "ease-in-out"
     };
     return (
       <div>

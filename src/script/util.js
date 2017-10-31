@@ -1,5 +1,5 @@
 export default {
-  getType: function(name){
+  "getType": function(name){
     let type = "";
     switch(name){
       case "头条":

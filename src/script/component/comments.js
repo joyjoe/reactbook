@@ -4,22 +4,22 @@ import { Row, Col, Form, Input, Button, Card, notification } from "antd";
 
 const FormItem = Form.Item;
 
-class Comments extends Component {
+let Comments = class Comments extends Component {
   constructor() {
     super();
     this.state = {
-      comments: ''
+      "comments": ""
     }
   }
 
   componentDidMount() {
     fetch(`http://newsapi.gugujiankong.com/Handler.ashx?action=getcomments&uniquekey=${this.props.uniquekey}`, {
-      Method: "GET"
+      "Method": "GET"
     })
       .then(response => response.json())
       .then(json => {
         this.setState({
-          comments: json
+          "comments": json
         });
       });
   }
@@ -28,7 +28,7 @@ class Comments extends Component {
     e.preventDefault();
     let remark = this.props.form.getFieldValue("remark");
     fetch(`http://newsapi.gugujiankong.com/Handler.ashx?action=comment&userid=${localStorage.userId}&uniquekey=${this.props.uniquekey}&commnet=${remark}`, {
-      Method: "GET"
+      "Method": "GET"
     })
       .then(response => response.json())
       .then(json => {
@@ -38,14 +38,14 @@ class Comments extends Component {
 
   addUserCollection() {
     fetch(`http://newsapi.gugujiankong.com/Handler.ashx?action=uc&userid=${localStorage.userId}&uniquekey=${this.props.uniquekey}`, {
-      Method: "GET"
+      "Method": "GET"
     })
       .then(response => response.json())
       .then(json => {
         console.log(json);
         notification.success({
-          description: "收藏此文章成功",
-          message: "ReactNews提醒"
+          "description": "收藏此文章成功",
+          "message": "ReactNews提醒"
         });
       });
   }

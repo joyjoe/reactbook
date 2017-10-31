@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Row, Col, Tabs, Carousel } from "antd";
 const TabPane = Tabs.TabPane;
 
@@ -15,10 +15,10 @@ import PCNewsImageBlock from "./pc_news_image_block";
 class PCNewsContainer extends Component {
   render() {
     const settings = {
-      effect: "fade",
-      dots: true,
-      autoplay: true,
-      easing: "ease-in-out"
+      "effect": "fade",
+      "dots": true,
+      "autoplay": true,
+      "easing": "ease-in-out"
     };
     return (
       <Row className="">

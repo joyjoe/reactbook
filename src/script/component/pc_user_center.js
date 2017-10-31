@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 import { Row, Col, Tabs, Card } from "antd";
 
@@ -11,29 +11,29 @@ class PCUserCenter extends Component {
   constructor() {
     super();
     this.state = {
-      usercollection: '',
-      usercomments: ''
+      "usercollection": "",
+      "usercomments": ""
     };
   }
 
   componentDidMount() {
     fetch(`http://newsapi.gugujiankong.com/Handler.ashx?action=getuc&userid=${localStorage.getItem("userId")}`, {
-      Method: "GET"
+      "Method": "GET"
     })
       .then(response => response.json())
       .then(json => {
         this.setState({
-          usercollection: json
+          "usercollection": json
         });
       });
 
     fetch(`http://newsapi.gugujiankong.com/Handler.ashx?action=getusercomments&userid=${localStorage.getItem("userId")}`, {
-      Method: "GET"
+      "Method": "GET"
     })
       .then(response => response.json())
       .then(json => {
         this.setState({
-          usercomments: json
+          "usercomments": json
         });
       });
   }

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import { Route, Router, Link } from "react-router";
 import { Link } from "react-router-dom";
 
-import { Row, Col, Menu, Icon, Form, Input, Button, Modal, Tabs, message } from 'antd';
+import { Row, Col, Menu, Icon, Form, Input, Button, Modal, Tabs, message } from "antd";
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 const FormItem = Form.Item;
@@ -17,14 +17,14 @@ const config = {
   "r_s_url": "http://newsapi.gugujiankong.com/Handler.ashx" //?action=register&username=userName&password=password&r_userName="+formData.r_userName+"&r_password="+formData.r_password+"&r_confirmPassword="+formData.r_confirmPassword
 };
 
-class PCHeader extends Component {
+let PCHeader = class PCHeader extends Component {
   state = {
-    current: "mail",
-    userNickName: "",
-    userId: 0,
-    hasLogined: false,
-    modalVisible: false,
-    action: "login"
+    "current": "mail",
+    "userNickName": "",
+    "userId": 0,
+    "hasLogined": false,
+    "modalVisible": false,
+    "action": "login"
   }
 
   // life method
@@ -40,9 +40,9 @@ class PCHeader extends Component {
   }
 
   handleClick = (e) => {
-    if (e.key == 'register') {
+    if (e.key == "register") {
       this.setState({
-        current: "register"
+        "current": "register"
       });
       this.setModalVisible(true);
     } else if (e.key == "logout") {
@@ -50,16 +50,16 @@ class PCHeader extends Component {
       localStorage.removeItem("userNickName");
       localStorage.removeItem("userId");
       this.setState({
-        hasLogined: false,
-        current: e.key
+        "hasLogined": false,
+        "current": e.key
       });
     } else if (e.key == "settings") {
       this.setState({
-        current: e.key
+        "current": e.key
       });
     } else {
       this.setState({
-        current: e.key
+        "current": e.key
       });
     }
   }
@@ -67,7 +67,7 @@ class PCHeader extends Component {
   // 是否显示模态框
   setModalVisible(flag) {
     this.setState({
-      modalVisible: flag
+      "modalVisible": flag
     });
   }
 
@@ -81,17 +81,17 @@ class PCHeader extends Component {
       } else {
         // 发送请求 fetch
         fetch(`${config["r_s_url"]}?action=${this.state.action}&username=${value.s_username}&password=${value.s_password}&r_userName=${value.r_username}&r_password=${value.r_password}&r_confirmPassword=${value.r_confirmPassword}`, {
-          method: "GET"
+          "method": "GET"
         }).then((response) => {
           return response.json();
         }).then((json) => {
           this.setState({
-            userNickName: json.NickUserName,
-            userId: json.UserId
+            "userNickName": json.NickUserName,
+            "userId": json.UserId
           });
           message.success("请求成功！");
           this.setState({
-            hasLogined: true
+            "hasLogined": true
           });
           this.setModalVisible(false);
           // setting localStorage
@@ -107,11 +107,11 @@ class PCHeader extends Component {
     console.log(activeKey);
     if (activeKey == "tab.register") {
       this.setState({
-        action: "register"
+        "action": "register"
       });
     } else if (activeKey == "tab.login") {
       this.setState({
-        action: "login"
+        "action": "login"
       });
     }
   }

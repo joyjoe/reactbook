@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 import { Row, Col } from "antd";
 
@@ -15,10 +15,10 @@ class MobileList extends Component {
   constructor() {
     super();
     this.state = {
-      news: [],
-      initializing: 1,
-      hasMore: false,
-      count: 5
+      "news": [],
+      "initializing": 1,
+      "hasMore": false,
+      "count": 5
     };
 
     this.handleLoadMore = this.handleLoadMore.bind(this);
@@ -36,36 +36,36 @@ class MobileList extends Component {
       }); */
 
     fetch(`http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=${this.props.type}&count=${this.state.count}`, {
-      method: "GET"
+      "method": "GET"
     }).then(response => response.json())
       .then(json => {
         this.setState({
-          news: json
+          "news": json
         });
       });
   }
 
   componentDidMount() {
     this.setState((prevState, props) => ({
-      hasMore: true,
-      initializing: 2
+      "hasMore": true,
+      "initializing": 2
     }));
   }
 
   handleLoadMore(resolve) {
     setTimeout(() => {
       this.setState((prevState, props) => ({
-        initializing: 1,
-        count: prevState.count + 5,
-        hasMore: prevState.count > 0 && prevState.count < 50
+        "initializing": 1,
+        "count": prevState.count + 5,
+        "hasMore": prevState.count > 0 && prevState.count < 50
       }));
 
       fetch(`http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=${this.props.type}&count=${this.state.count}`, {
-        method: "GET"
+        "method": "GET"
       }).then(response => response.json())
         .then(json => {
           this.setState({
-            news: json
+            "news": json
           });
           resolve();
         });
@@ -97,7 +97,7 @@ class MobileList extends Component {
         </section>
         );
     }) :
-      '加载失败请重试';
+      "加载失败请重试";
 
     // Tloader props
     const {initializing, hasMore} = this.state;

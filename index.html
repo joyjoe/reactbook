@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>welcome to react's world</title>
+  <% for(var file in htmlWebpackPlugin.files["css"]){ %>
+    <link href="/<%= htmlWebpackPlugin.files['css'][file] %>" rel="stylesheet"></link>
+  <% } %>
 </head>
 
 <body>

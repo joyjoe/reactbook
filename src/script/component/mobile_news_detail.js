@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Row, Col, BackTop } from "antd";
 
 import MobileHeader from "./mobile_header";
@@ -9,18 +9,18 @@ class MobileNewsDetail extends Component {
   constructor() {
     super();
     this.state = {
-      newsdetail: []
+      "newsdetail": []
     };
   }
 
   componentDidMount() {
     fetch(`http://newsapi.gugujiankong.com/Handler.ashx?action=getnewsitem&uniquekey=${this.props.params.uniquekey}`, {
-      method: "GET"
+      "method": "GET"
     })
       .then((response) => response.json())
       .then((json) => {
         this.setState({
-          newsdetail: json
+          "newsdetail": json
         });
         window.document.title = `${this.state.newsdetail.title}` + "- React News | React 驱动的新闻平台";
       });
@@ -28,7 +28,7 @@ class MobileNewsDetail extends Component {
 
   createMarkup() {
     return {
-      __html: this.state.newsdetail.pagecontent
+      "__html": this.state.newsdetail.pagecontent
     };
   }
 
